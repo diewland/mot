@@ -13,7 +13,7 @@
     <!-- game -->
     <div class='container'>
 
-      <h3>Master of Testnet</h3>
+      <h3 class='p-2 text-center'>Master of Testnet</h3>
       <p class='text-danger'>
         >> Unknown (<a href='#/' target='_blank'>0x123..456</a>)<br>
         >> Level 99
@@ -21,15 +21,32 @@
 
       <hr>
 
-      <h5>Profile</h5>
-        >> Address : <a href='#/'>0x888...999</a><br>
-        >> Username: Bob<br>
-        >> Level &nbsp; : 5<br>
+      <!-- connected -->
+      <div class='connected'>
+        <h5>Profile</h5>
+          >> Address : <a href='#/'>0x888...999</a><br>
+          >> Username: Bob<br>
+          >> Level &nbsp; : 5<br>
+        <br>
+        <div class='row'>
+          <div class='col-md mb-1'>
+            <a href='#/' class='btn btn-warning w-100'>Level Up</a><br>
+          </div>
+          <div class='col-md mb-1'>
+            <a href='#/' class='btn btn-primary w-100'>Rename</a><br>
+          </div>
+          <div class='col-md mb-1'>
+            <a href='#/' class='btn btn-secondary w-100'>Disconnect</a>
+          </div>
+        </div>
+      </div>
 
-      <br>
-      <a href='#/' class='btn btn-warning'>Level Up</a>
-      <a href='#/' class='btn btn-primary'>Rename</a>
-      <a href='#/' class='btn btn-secondary'>Disconnect</a>
+      <!-- not connect -->
+      <div class='row'>
+        <div class='col'>
+          <a href='#/' class='btn btn-primary w-100'>Connect</a><br>
+        </div>
+      </div>
 
     </div>
 

@@ -1,6 +1,10 @@
 html, body, pre, code, kbd, samp {
   font-family: "Press Start 2P";
 }
+h3 {
+  color: #836ef9;
+  background-color: #241359;
+}
 a {
   color: rgb(33, 37, 41);
   text-decoration: underline dashed;
