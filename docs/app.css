@@ -1,0 +1,10 @@
+html, body, pre, code, kbd, samp {
+  font-family: "Press Start 2P";
+}
+a {
+  color: rgb(33, 37, 41);
+  text-decoration: underline dashed;
+}
+.text-danger a {
+  color: rgb(220, 53, 69);
+}
