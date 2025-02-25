@@ -5,10 +5,19 @@ h3 {
   color: #836ef9;
   background-color: #241359;
 }
-a {
-  color: rgb(33, 37, 41);
-  text-decoration: underline dashed;
+h3 span {
+  color: #fff;
 }
-.text-danger a {
-  color: rgb(220, 53, 69);
+.player {
+  position: relative;
+}
+.player div {
+  position: absolute;
+  bottom: 0px;
+  font-size: xx-large;
+  color: #fff;
+  background-color: #000000aa;
+}
+a {
+  text-decoration: underline dashed;
 }
