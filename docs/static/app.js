@@ -64,7 +64,7 @@ $('#mint').click(async _ => {
     return;
   }
   // mint
-  contract = new ethers.Contract(CONTRACT_ADDR, CONTRACT_ABI, signer);
+  if (contract === null) contract = new ethers.Contract(CONTRACT_ADDR, CONTRACT_ABI, signer);
   mint_by_gas_rate(contract, MINT_GAS_RATE)
     .then(tx => {
       console.log(tx);
@@ -83,6 +83,49 @@ $('#mint').click(async _ => {
     })
     .catch(e => {
       $('#mint').removeClass('disabled');
+      alert(e);
+    });
+});
+
+// rename
+$('#rename').click(async _ => {
+  $('#rename').addClass('disabled');
+
+  // get username from prompt
+  let cur_username = $('.user .username').html();
+  let new_username = prompt('Enter username:', cur_username);
+  if ((new_username === null) || (new_username == cur_username)) {
+    $('#rename').removeClass('disabled');
+    return
+  }
+  new_username = safe_username(new_username);
+
+  // recheck chain before rename
+  let [ok, msg] = await validate_chain();
+  if (!ok) {
+    $('#rename').removeClass('disabled');
+    alert(msg);
+    return;
+  }
+  // rename
+  if (contract === null) contract = new ethers.Contract(CONTRACT_ADDR, CONTRACT_ABI, signer);
+  contract.getFunction('setName').send(new_username)
+    .then(tx => {
+      console.log(tx);
+      return tx.wait();
+    })
+    .then(receipt => { // https://docs.ethers.org/v6/api/providers/#TransactionReceipt
+      console.log(receipt);
+      if (receipt.status != 1) { // 1 success, 0 revert
+        alert(JSON.stringify(receipt.toJSON()));
+        $('#rename').removeClass('disabled');
+        return;
+      }
+      $('.user .username').html(new_username);
+      $('#rename').removeClass('disabled');
+    })
+    .catch(e => {
+      $('#rename').removeClass('disabled');
       alert(e);
     });
 });
@@ -217,10 +260,14 @@ function play_party_effect() {
       size: 2,
   });
 }
+function safe_username(name) {
+  if (!name) return 'Player';
+  return name.replace(/[^a-zA-Z0-9._-]/g, '').slice(0, 15);
+}
 
 // game
 function update_player(sel, addr, name, lv) {
-  $(sel + ' .username').html(name);
+  $(sel + ' .username').html(safe_username(name));
   $(sel + ' .lv').html('Lv ' + lv);
   $(sel + ' .addr')
     .html(short_addr(addr))
