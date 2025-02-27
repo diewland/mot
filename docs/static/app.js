@@ -255,6 +255,7 @@ function short_addr(addr) {
   return addr.substr(0, 6) + '...' + addr.slice(-4);
 }
 function play_party_effect() {
+  $('#aud')[0].play();
   party.confetti(document.body, {
       count: 120,
       size: 2,
