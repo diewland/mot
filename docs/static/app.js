@@ -231,6 +231,14 @@ function level_up_user() {
   let new_lv = +$('.user .player .lv').text().split(' ')[1] + 1;
   $('.user .player .lv').html(`Lv ${new_lv}`);
   update_pfp(new_lv);
+
+  // case: you are master
+  let master_lv = +$('.master .player .lv').text().split(' ')[1];
+  if (master_lv < new_lv) {
+    $('.master .username').html($('.user .username').html());
+    $('.master .player .lv').html(`Lv ${new_lv}`);
+    $('.master .addr')[0].outerHTML = $('.user .addr')[0].outerHTML;
+  }
 }
 function update_pfp(lv) {
   let master_lv = +$('.master .player .lv').text().split(' ')[1];
