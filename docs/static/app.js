@@ -7,6 +7,7 @@ let reader = new ethers.Contract(CONTRACT_ADDR, CONTRACT_ABI, new ethers.JsonRpc
 let raw_chain_id = null;
 
 // main
+party.resolvableShapes['nad'] = `<img src="./images/monad_logo.png">`;
 $('.master .player img').attr('src', PFP_EVO.master);
 $('.user .player img').attr('src', PFP_EVO.user);
 $('.master .addr').attr('href', CHAIN_EXPLORER + 'address/' + ZERO_ADDR);
@@ -257,8 +258,9 @@ function short_addr(addr) {
 function play_party_effect() {
   $('#aud')[0].play();
   party.confetti(document.body, {
-      count: 120,
-      size: 2,
+      shapes: [ 'nad' ],
+      count: 50,
+      size: 1,
   });
 }
 function safe_username(name) {
