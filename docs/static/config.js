@@ -1,6 +1,6 @@
 // chain
 const CHAIN_NAME      = "Monad Testnet";
-const CHAIN_RPC       = "https://testnet-rpc.monad.xyz";
+const CHAIN_RPC       = "https://monad-testnet.g.alchemy.com/v2/OAJaRKUzodL8BNyow02QM9ZfZ6utdxvw";
 const CHAIN_ID        = 10143;
 const CHAIN_SYMBOL    = "MON";
 const CHAIN_EXPLORER  = "https://testnet.monadexplorer.com/";
